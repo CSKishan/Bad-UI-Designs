@@ -1,0 +1,78 @@
+h1 {
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+h3 {
+    font-size: 35px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:rgb(50, 188, 243);
+    color: white;
+    text-align: center;
+}
+
+.top {
+    background-color: midnightblue;
+    padding: 10px;
+    color: white;
+    margin: 0;
+}
+
+.container {
+    justify-content: center;
+    text-align: center;
+    padding: 100px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-flow: row;
+}
+
+button {
+    background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+label[id='rBday'] {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-bottom: 40px;
+    font-size: 30px;
+}
+
+label[id='pBday'] {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-bottom: 70px;
+    font-size: 60px;
+}
+
+li {
+    list-style-type: none;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/site.css" />
+    <script src="js/site.js" defer></script>
+    <title >Bad UI Birthday</title>
+  </head>
+  <body onload="GetDate()">
+    <div class="top">
+      <h1>Bad Birthday Guesser</h1>
+    </div>
+
+    <div class="row">
+      <div class="container">
+        <h3>Later than</h3>
+        <ul id="later">
+        </ul>
+      </div>
+
+      <div class="container">
+        <h1>IS THIS THE DATE?</h1>
+        <br /><br />
+        <label id="rBday"></label>
+        <br>
+        <br>
+        <div class="row">
+          <button id="earlyBtn" onclick="AddToEarlyList()">Earlier</button>
+          <button id="lateBtn" onclick="AddToLateList()">Later</button>
+        </div>
+        <button onclick="StopGuess()">Right!</button>
+
+        <br><br>
+        <label id="pBday"></label>
+        <br /><br />
+        <label id="guessCount">No. of Guesses: 0</label>
+      </div>
+
+      <div class="container">
+        <h3>Earlier than</h3>
+        <ul id="earlier">
+        </ul>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <h4>Bad UI Design: #001</h4>
+  </footer>
+</html>
