@@ -1,6 +1,9 @@
 let count = 0;
-let date;
-let DateList = [];
+let date = new Date();
+let earlyDateList = [];
+let lateDateList = [];
+let lowDate = new Date(1970, 1, 1);
+let highDate = new Date();
 
 const rBday = document.getElementById("rBday");
 const pBday = document.getElementById("pBday");
@@ -15,47 +18,76 @@ function GetDate() {
   DisplayOnScreen();
 }
 
+function SortList() {
+  earlySortList();
+  lateSortList();
+}
+
+function earlySortList() {
+  earlyDateList.sort(function (a, b) {
+    return new Date(a) - new Date(b);
+  });
+}
+
+function lateSortList() {
+  lateDateList.sort(function (a, b) {
+    return new Date(b) - new Date(a);
+  });
+}
+
 function CalculateDate(start = new Date(1970, 1, 1), end = new Date()) {
   do {
     date = new Date(
       start.getTime() + Math.random() * (end.getTime() - start.getTime())
     );
-  } while (DateList.includes(date) === true);
-  DateList.push(date);
+  } while (
+    earlyDateList.includes(date) === true ||
+    lateDateList.includes(date) == true
+  );
+  SortList();
+  console.warn(lowDate.toDateString());
+  console.warn(highDate.toDateString());
 }
 
 function DisplayOnScreen() {
-    let stringDate = date.toDateString();
+  let stringDate = date.toDateString();
+  console.error(stringDate);
   rBday.innerHTML = stringDate;
 }
 
 function AddToEarlyList() {
   let dateString = date.toDateString();
+  earlyDateList.push(dateString);
   var node = document.createElement("li");
   var textnode = document.createTextNode(dateString);
   node.appendChild(textnode);
   earlierList.appendChild(node);
   count++;
   gC.innerHTML = `No. of Guesses: ${count}`;
-  CalculateDate(new Date(1970, 1, 1), new Date(dateString));
+  SortList();
+  highDate = new Date(earlyDateList[0]);
+  CalculateDate(lowDate, highDate);
   DisplayOnScreen();
 }
 
 function AddToLateList() {
-    let dateString = date.toDateString();
-    let node = document.createElement("LI");
-    let textnode = document.createTextNode(dateString);
-    node.appendChild(textnode);
-    laterList.appendChild(node);
-    count++;
-    gC.innerHTML = `No. of Guesses: ${count}`;
-    CalculateDate(new Date(dateString), new Date());
-    DisplayOnScreen();
+  let dateString = date.toDateString();
+  lateDateList.push(dateString);
+  let node = document.createElement("LI");
+  let textnode = document.createTextNode(dateString);
+  node.appendChild(textnode);
+  laterList.appendChild(node);
+  count++;
+  gC.innerHTML = `No. of Guesses: ${count}`;
+  SortList();
+  lowDate = new Date(lateDateList[0]);
+  CalculateDate(lowDate, highDate);
+  DisplayOnScreen();
 }
 
 function StopGuess() {
-    let dateString = date.toDateString();
-    pBday.innerHTML = dateString;
-    eBtn.disabled = true;
-    lBtn.disabled = true;
+  let dateString = date.toDateString();
+  pBday.innerHTML = dateString;
+  eBtn.disabled = true;
+  lBtn.disabled = true;
 }
